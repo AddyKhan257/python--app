@@ -1,0 +1,38 @@
+#taking base only that require for task (small size python)
+
+#stage 1
+
+FROM python:3.14-slim AS builder
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt --target /app/libs
+
+#python slim ka kaam yha finish ho gya hy qki jo bhi python se chahiye wo /app/libs me store hy
+
+COPY . .
+
+#stage 2
+
+#take even lesser size base image (minimal)
+FROM gcr.io/distroless/python3-debian12 AS deployer
+
+WORKDIR /app
+
+COPY --from=builder /app/libs /app/libs
+
+COPY --from=builder /app .
+
+ENV PYTHONPATH="/app/libs"
+
+EXPOSE 80
+
+CMD ["run.py"]
+
+
+
+
+
+
