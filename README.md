@@ -131,11 +131,3 @@ Learning Docker, AWS, Kubernetes & CI/CD 🚀
 
 ---
 
-If you want, I can also upgrade this README with:
-
-* 📛 GitHub badges
-* 📊 Image size comparison (single vs multi-stage)
-* ☁️ AWS deployment steps
-* 🐙 GitHub Actions CI/CD integration
-
-Just tell me what level you want 🔥
